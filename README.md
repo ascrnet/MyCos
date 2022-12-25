@@ -1,6 +1,6 @@
 # MyCos
 
-![MyCos](https://github.com/ascrnet/MyCos/blob/main/img/mycos.png)
+![MyCos](https://github.com/ascrnet/MyCos/blob/main/img/mycos.png?raw=true)
 
 A small cassette operating system with the essentials I think you should have to use this classic device.
 It was intended for the XL/XE series, some basic functions necessary for novices to use the cassette.
@@ -11,3 +11,5 @@ It was intended for the XL/XE series, some basic functions necessary for novices
 * D. Load and run a binary program from tape, using the standard tscb loader from baktragh.
 * E. Generate a copy of the MyCos in case you need it (similar to the H: option in DOS).
 * F. Cold reboot your ATARI. 
+
+To download it you must go to the [releases](https://github.com/ascrnet/MyCos/releases)
