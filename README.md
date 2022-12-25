@@ -1,6 +1,6 @@
 # MyCos
 
-![MyCos](https://github.com/ascrnet/mycos/blob/main/src/mycos.png)
+![MyCos](https://github.com/ascrnet/MyCos/blob/main/img/mycos.png)
 
 A small cassette operating system with the essentials I think you should have to use this classic device.
 It was intended for the XL/XE series, some basic functions necessary for novices to use the cassette.
