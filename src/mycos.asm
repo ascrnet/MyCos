@@ -190,22 +190,22 @@ onload
 	open #$10, #$4, #$80, #drive
 ; Read a segment 
 getseg
-	lda #$FF                
+	lda #$FF
 	sta INITAD
 	sta INITAD+1
-    lda #$0
-	sta ATRACT     
+	lda #$0
+	sta ATRACT
 ; Get segment header
 gs_strta  
-	ldy #<BL_SEG_HEAD    
+	ldy #<BL_SEG_HEAD
 	lda #>BL_SEG_HEAD
-	jsr getblk_2         
-	lda BL_SEG_HEAD      
+	jsr getblk_2
+	lda BL_SEG_HEAD
 	and BL_SEG_HEAD+1
 	cmp #$FF
-	bne gs_enda        
-	sta BL_HDR_FOUND 
-	beq gs_strta         
+	bne gs_enda
+	sta BL_HDR_FOUND
+	beq gs_strta
 ; Get rest of the segment header
 gs_enda   
 	ldy #<[BL_SEG_HEAD+2]
@@ -218,7 +218,7 @@ gs_enda
 ; Calculate length of the segment
 gs_calcln 
 	sec
-	lda BL_SEG_HEAD+2        
+	lda BL_SEG_HEAD+2
 	sbc BL_SEG_HEAD+0
 	sta ICBLL+$10
 	lda BL_SEG_HEAD+3
@@ -244,16 +244,16 @@ realini
 	lda #$34
 	sta PACTL
 postini
-	jmp getseg            
+	jmp getseg
 ; Handle errors in GETBLK.
 gberr
 	cpy #$88
-	bne errhndl             
-	ldx #$FF                
-	txs                      
-	jsr fclose            
-; Run the program          
-	jmp (RUNAD)             
+	bne errhndl
+	ldx #$FF
+	txs
+	jsr fclose
+; Run the program
+	jmp (RUNAD)
 ; Calls GETBLK with a length of 2 bytes.
 getblk_2
 	ldx #$2
@@ -269,7 +269,7 @@ getblk
 	bmi gberr
 	rts
 ; Emulation of JSR(738)
-DOINIT    
+DOINIT
 	jmp (INITAD)
 ; 
 BL_SEG_HEAD
@@ -288,9 +288,9 @@ errnobin
 	print #loader_errorbin
 	bne errsig
 ;I/O error 
-errhndl  
+errhndl
 	jsr cio_error
-errsig   
+errsig
 	jsr keypress
 	jmp init
 
@@ -337,9 +337,9 @@ aux1
 	mva #$0 ICAX1,x
 aux2
 	mva #$0 ICAX2,x
-    mva #COPEN ICCOM,x
-    mwa fname ICBAL,x
-    jsr CIOV
+	mva #COPEN ICCOM,x
+	mwa fname ICBAL,x
+	jsr CIOV
 	rts
 fname
     .word 
@@ -347,8 +347,8 @@ fname
 
 ; Procedure close cio
 .proc close (.byte x) .reg
-    mva #CCLOSE ICCOM,x
-    jsr CIOV
+	mva #CCLOSE ICCOM,x
+	jsr CIOV
 	rts
 .endp
 
@@ -357,22 +357,22 @@ fname
 chn
 	ldx #$0
 type
-    mva #$0 ICCOM,x
+	mva #$0 ICCOM,x
 	mwa buffer ICBAL,x
-    mwa length ICBLL,x
+	mwa length ICBLL,x
 	jsr CIOV
 	rts
 buffer
-	.word	
+	.word
 length
 	.word
 .endp
 
 ; Procedure print 
 .proc print (.word text) .var
-    ldx #$0
+	ldx #$0
 	mva #CPUTREC ICCOM,x
-    mwa text ICBAL,x
+	mwa text ICBAL,x
 	mwa #$A0 ICBLL,x
 	jsr CIOV
 	rts
