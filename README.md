@@ -11,3 +11,5 @@ It was intended for the XL/XE series, some basic functions necessary for novices
 * D. Load and run a binary program from tape, using the standard tscb loader from baktragh.
 * E. Generate a copy of the MyCos in case you need it (similar to the H: option in DOS).
 * F. Cold reboot your ATARI. 
+
+To download it you must go to the [releases](https://github.com/ascrnet/MyCos/releases)
